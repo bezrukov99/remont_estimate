@@ -28,7 +28,8 @@ chmod +x scripts/build_play_bundle.sh
 | Файл | Описание |
 |------|----------|
 | [docs/GOOGLE_PLAY.md](docs/GOOGLE_PLAY.md) | Чеклист публикации в Google Play |
-| [docs/PRIVACY_POLICY_RU.md](docs/PRIVACY_POLICY_RU.md) | Шаблон политики конфиденциальности |
+| [Политика конфиденциальности](https://bezrukov99.github.io/remont_estimate/privacy-policy.html) | Публичная страница для Google Play |
+| [docs/PRIVACY_POLICY_RU.md](docs/PRIVACY_POLICY_RU.md) | Текст политики (Markdown) |
 
 ## Версия
 
