@@ -1,0 +1,317 @@
+{
+  "@@locale": "en",
+  "appTitle": "Smetochka",
+  "defaultProjectName": "My Renovation",
+  "export": "Export",
+  "projectSettings": "Project Settings",
+  "projectsCount": "{count, plural, =1{1 project} other{{count} projects}}",
+  "@projectsCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "myProjects": "My Projects",
+  "myProjectsHint": "Track budgets for different apartments or houses.",
+  "newProject": "New project",
+  "newProjectHint": "e.g. Country house",
+  "enterProjectName": "Enter a project name",
+  "create": "Create",
+  "deleteProjectTitle": "Delete \"{name}\"?",
+  "@deleteProjectTitle": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "deleteProjectMessage": "All rooms, materials, and budget data in this project will be removed.",
+  "projectSummary": "{rooms} rooms · {materials} materials · {spent}",
+  "@projectSummary": {
+    "placeholders": {
+      "rooms": {"type": "int"},
+      "materials": {"type": "int"},
+      "spent": {"type": "String"}
+    }
+  },
+  "projectName": "Project name",
+  "language": "Language",
+  "languageSystem": "System default",
+  "languageEnglish": "English",
+  "languageRussian": "Russian",
+  "theme": "Theme",
+  "themeSystem": "System default",
+  "themeLight": "Light",
+  "themeDark": "Dark",
+  "currency": "Currency",
+  "targetBudget": "Target budget",
+  "exportPdfExcel": "Export PDF / Excel",
+  "save": "Save",
+  "resetAllData": "Reset all data",
+  "resetProjectTitle": "Reset project?",
+  "resetProjectMessage": "This will delete all rooms, materials, and budget data. This cannot be undone.",
+  "cancel": "Cancel",
+  "reset": "Reset",
+  "materialsTotal": "Materials total",
+  "totalSpent": "Spent",
+  "editBudget": "Edit budget",
+  "setBudget": "Set budget",
+  "ofTarget": "of {amount} target",
+  "@ofTarget": {
+    "placeholders": {
+      "amount": {"type": "String"}
+    }
+  },
+  "overBudgetBy": "Over budget by {amount}",
+  "@overBudgetBy": {
+    "placeholders": {
+      "amount": {"type": "String"}
+    }
+  },
+  "percentRemaining": "{percent}% remaining",
+  "@percentRemaining": {
+    "placeholders": {
+      "percent": {"type": "String"}
+    }
+  },
+  "setBudgetHint": "Tap \"Set budget\" to track your renovation limit",
+  "rooms": "Rooms",
+  "add": "Add",
+  "addRoomFirstSnack": "Add a room first, then add materials",
+  "noRoomsYet": "No rooms yet",
+  "noRoomsHint": "Start by adding rooms like Kitchen,\nBathroom, or Living Room.",
+  "addFirstRoom": "Add your first room",
+  "targetBudgetTitle": "Target Budget",
+  "budgetAmount": "Budget amount",
+  "budgetAmountHint": "e.g. 15000",
+  "saveBudget": "Save Budget",
+  "removeBudgetLimit": "Remove budget limit",
+  "enterValidBudget": "Enter a valid budget amount",
+  "editRoom": "Edit room",
+  "addRoom": "Add Room",
+  "roomName": "Room name",
+  "roomNameHint": "e.g. Kitchen",
+  "icon": "Icon",
+  "saveRoom": "Save Room",
+  "enterRoomName": "Please enter a room name",
+  "quickAdd": "Quick Add",
+  "addMaterial": "Add Material",
+  "addMaterialSubtitle": "Log tiles, paint, fixtures…",
+  "addRoomSubtitle": "Kitchen, bathroom, bedroom…",
+  "exportEstimate": "Export Estimate",
+  "materialsAcrossRooms": "{materials} materials across {rooms} rooms",
+  "@materialsAcrossRooms": {
+    "placeholders": {
+      "materials": {"type": "int"},
+      "rooms": {"type": "int"}
+    }
+  },
+  "addRoomsToExport": "Add rooms to enable export",
+  "exportPdf": "Export PDF",
+  "exportPdfSubtitle": "A4 report with photos & room totals",
+  "exportExcel": "Export Excel",
+  "exportExcelSubtitle": ".xlsx with formulas for workers",
+  "addRoomBeforeExport": "Add at least one room before exporting.",
+  "exportFailed": "Export failed: {error}",
+  "@exportFailed": {
+    "placeholders": {
+      "error": {"type": "String"}
+    }
+  },
+  "pdfReady": "PDF ready",
+  "excelReady": "Excel ready",
+  "share": "Share",
+  "openFile": "Open file",
+  "openFileFailed": "Could not open the file. Use Share to send it to another app.",
+  "openingFile": "Opening…",
+  "saveToGallery": "Save to gallery",
+  "photoSavedToGallery": "Photo saved to gallery",
+  "photoShared": "Share sheet opened",
+  "photoActionFailed": "Could not complete action: {error}",
+  "@photoActionFailed": {
+    "placeholders": {
+      "error": {"type": "String"}
+    }
+  },
+  "addRoomBeforeMaterials": "Add a room before adding materials.",
+  "editMaterial": "Edit Material",
+  "materialName": "Material name",
+  "materialNameHint": "e.g. Ceramic tiles",
+  "dimensionsOptional": "Dimensions / size (optional)",
+  "dimensionsHint": "e.g. 120×60 cm",
+  "materialDetails": "Product details",
+  "materialBrand": "Brand",
+  "materialBrandHint": "e.g. Kerama Marazzi",
+  "materialArticle": "Article / SKU",
+  "materialArticleHint": "e.g. KM-12345",
+  "materialStore": "Store",
+  "materialStoreHint": "e.g. Leroy Merlin",
+  "materialArticleShort": "art.",
+  "quantityAndUnit": "Quantity & unit",
+  "pricePerUnit": "Price per {unit}",
+  "@pricePerUnit": {
+    "placeholders": {
+      "unit": {"type": "String"}
+    }
+  },
+  "totalPrice": "Total price",
+  "saveChanges": "Save Changes",
+  "saveMaterial": "Save Material",
+  "deleteMaterial": "Delete material",
+  "deleteMaterialTitle": "Delete material?",
+  "deleteMaterialMessage": "This action cannot be undone.",
+  "selectedMaterialsCount": "{count, plural, =0{None selected} =1{1 selected} other{{count} selected}}",
+  "deleteMaterialsTitle": "{count, plural, =1{Delete 1 material?} other{Delete {count} materials?}}",
+  "deleteMaterialsMessage": "Selected materials will be permanently removed. This cannot be undone.",
+  "delete": "Delete",
+  "room": "Room",
+  "selectRoom": "Please select a room",
+  "enterMaterialName": "Enter a material name",
+  "enterValidPrice": "Enter a valid price per unit",
+  "quantityMustBePositive": "Quantity must be greater than zero",
+  "couldNotLoadImage": "Could not load image: {error}",
+  "@couldNotLoadImage": {
+    "placeholders": {
+      "error": {"type": "String"}
+    }
+  },
+  "materialPhotos": "Photos",
+  "materialPhotosHint": "Add up to {max} photos from camera or gallery",
+  "@materialPhotosHint": {
+    "placeholders": {
+      "max": {"type": "int"}
+    }
+  },
+  "photosCount": "{count} of {max}",
+  "@photosCount": {
+    "placeholders": {
+      "count": {"type": "int"},
+      "max": {"type": "int"}
+    }
+  },
+  "maxPhotosReached": "Maximum {max} photos per material",
+  "@maxPhotosReached": {
+    "placeholders": {
+      "max": {"type": "int"}
+    }
+  },
+  "tapToChangePhoto": "Tap to change photo",
+  "tapToAddPhoto": "Tap to take photo / add image",
+  "cameraOrGallery": "Camera or gallery",
+  "takePhoto": "Take photo",
+  "chooseFromGallery": "Choose from gallery",
+  "removePhoto": "Remove photo",
+  "roomNotFound": "Room not found",
+  "materialPurchased": "Purchased",
+  "materials": "Materials",
+  "itemsCount": "{count, plural, =1{1 item} other{{count} items}}",
+  "@itemsCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "noMaterialsYet": "No materials yet",
+  "roomSubtotal": "Room subtotal",
+  "roomPurchasedSubtotal": "Spent in room",
+  "materialsCount": "{count, plural, =1{1 material} other{{count} materials}}",
+  "@materialsCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "noMaterialsInRoom": "No materials in this room",
+  "noMaterialsInRoomHint": "Tap + to add tiles, paint, or fixtures",
+  "addMaterialFab": "Add material",
+  "deleteRoomTitle": "Delete \"{name}\"?",
+  "@deleteRoomTitle": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "deleteRoomMessage": "All materials in this room will also be removed.",
+  "roomKitchen": "Kitchen",
+  "roomBathroom": "Bathroom",
+  "roomLivingRoom": "Living Room",
+  "roomBedroom": "Bedroom",
+  "roomHallway": "Hallway",
+  "roomBalcony": "Balcony",
+  "roomOther": "Other",
+  "exportRenovationReport": "Smetochka — renovation estimate",
+  "exportProject": "Project: {name}",
+  "@exportProject": {
+    "placeholders": {
+      "name": {"type": "String"}
+    }
+  },
+  "exportGenerated": "Generated: {date}",
+  "@exportGenerated": {
+    "placeholders": {
+      "date": {"type": "String"}
+    }
+  },
+  "exportMaterialsTotal": "Materials total: {amount}",
+  "@exportMaterialsTotal": {
+    "placeholders": {
+      "amount": {"type": "String"}
+    }
+  },
+  "exportPurchasedTotal": "Spent (purchased): {amount}",
+  "@exportPurchasedTotal": {
+    "placeholders": {
+      "amount": {"type": "String"}
+    }
+  },
+  "exportRoomPurchased": "Spent: {amount}",
+  "@exportRoomPurchased": {
+    "placeholders": {
+      "amount": {"type": "String"}
+    }
+  },
+  "exportTargetBudget": "Target budget: {amount}",
+  "@exportTargetBudget": {
+    "placeholders": {
+      "amount": {"type": "String"}
+    }
+  },
+  "exportBudgetSummary": "Budget summary",
+  "exportGrandTotal": "Grand total",
+  "exportGrandTotalSpent": "Spent",
+  "exportPageOf": "Page {page} of {total}",
+  "@exportPageOf": {
+    "placeholders": {
+      "page": {"type": "int"},
+      "total": {"type": "int"}
+    }
+  },
+  "exportNoMaterialsInRoom": "No materials in this room",
+  "exportNoRoomsYet": "No rooms added yet",
+  "exportNoMaterials": "No materials",
+  "exportRoomSubtotal": "Room subtotal",
+  "exportColMaterial": "Material",
+  "exportColBrand": "Brand",
+  "exportColArticle": "Article",
+  "exportColStore": "Store",
+  "exportColDimensions": "Dimensions",
+  "exportColQty": "Qty",
+  "exportColUnit": "Unit",
+  "exportColPrice": "Price",
+  "exportColPricePerUnit": "Price/Unit",
+  "exportColTotal": "Total",
+  "exportColPhoto": "Photo",
+  "exportPhotoOnFile": "On file",
+  "exportPhotoCount": "{count, plural, =1{1 photo} other{{count} photos}}",
+  "@exportPhotoCount": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "exportPhotosExtra": "(+{count})",
+  "@exportPhotosExtra": {
+    "placeholders": {
+      "count": {"type": "int"}
+    }
+  },
+  "unitPcs": "Pcs",
+  "unitSqm": "Sq.m",
+  "unitPack": "Pack",
+  "unitMeters": "Meters",
+  "unitLiters": "Liters",
+  "unitKg": "Kg"
+}

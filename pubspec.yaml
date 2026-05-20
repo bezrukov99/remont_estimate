@@ -1,0 +1,50 @@
+name: remont_estimate
+description: Budget & Material Tracker for Home Renovation.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  cupertino_icons: ^1.0.8
+  equatable: ^2.0.8
+  excel: ^4.0.6
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: any
+  flutter_bloc: ^9.1.1
+  hydrated_bloc: ^11.0.0
+  gal: ^2.3.2
+  image_picker: ^1.2.2
+  open_file: ^3.5.11
+  photo_view: ^0.15.0
+  path_provider: ^2.1.5
+  pdf: ^3.12.0
+  share_plus: ^13.1.0
+  uuid: ^4.5.3
+
+dev_dependencies:
+  flutter_launcher_icons: ^0.14.4
+  flutter_lints: ^6.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  macos:
+    generate: true
+  image_path: assets/icon/app_icon.png
+  adaptive_icon_background: "#8FB392"
+  adaptive_icon_foreground: assets/icon/app_icon.png
+
+flutter:
+  uses-material-design: true
+  generate: true
+  assets:
+    - assets/icon/
+    - assets/fonts/
