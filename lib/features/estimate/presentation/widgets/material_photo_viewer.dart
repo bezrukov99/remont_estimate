@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:remont_estimate/core/services/material_image_storage.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 import 'package:remont_estimate/core/services/material_photo_actions.dart';
@@ -26,9 +27,7 @@ class MaterialPhotoViewer extends StatefulWidget {
     int initialIndex = 0,
     ValueChanged<String>? onRemove,
   }) {
-    final existing = paths
-        .where((p) => p.isNotEmpty && File(p).existsSync())
-        .toList();
+    final existing = MaterialImageStorage.existingPaths(paths);
     if (existing.isEmpty) {
       return Future.value();
     }
@@ -167,8 +166,12 @@ class _MaterialPhotoViewerState extends State<MaterialPhotoViewer> {
         onPageChanged: (index) => setState(() => _currentIndex = index),
         builder: (context, index) {
           final path = widget.paths[index];
+          final ImageProvider<Object> provider =
+              MaterialImageStorage.isRemoteUrl(path)
+                  ? NetworkImage(path)
+                  : FileImage(File(path));
           return PhotoViewGalleryPageOptions(
-            imageProvider: FileImage(File(path)),
+            imageProvider: provider,
             minScale: PhotoViewComputedScale.contained,
             maxScale: PhotoViewComputedScale.covered * 3,
             heroAttributes: PhotoViewHeroAttributes(tag: path),

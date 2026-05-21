@@ -1,7 +1,7 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:remont_estimate/core/constants/material_photo_limits.dart';
+import 'package:remont_estimate/core/services/material_image_storage.dart';
+import 'package:remont_estimate/core/widgets/material_photo_image.dart';
 import 'package:remont_estimate/core/theme/app_palette.dart';
 import 'package:remont_estimate/core/theme/app_spacing.dart';
 import 'package:remont_estimate/core/widgets/app_bottom_sheet.dart';
@@ -25,9 +25,8 @@ class MaterialPhotoPicker extends StatelessWidget {
   bool get _canAddMore =>
       photoPaths.length < MaterialPhotoLimits.maxPerMaterial;
 
-  List<String> get _existingPaths => photoPaths
-      .where((p) => p.isNotEmpty && File(p).existsSync())
-      .toList();
+  List<String> get _existingPaths =>
+      MaterialImageStorage.existingPaths(photoPaths);
 
   @override
   Widget build(BuildContext context) {
@@ -155,8 +154,8 @@ class _PhotoTile extends StatelessWidget {
       clipBehavior: Clip.antiAlias,
       child: InkWell(
         onTap: onTap,
-        child: Image.file(
-          File(path),
+        child: MaterialPhotoImage(
+          path: path,
           fit: BoxFit.cover,
           width: double.infinity,
           height: double.infinity,

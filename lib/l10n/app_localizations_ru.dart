@@ -659,4 +659,63 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get unitKg => 'кг';
+
+  @override
+  String get account => 'Аккаунт и облако';
+
+  @override
+  String get accountSubtitle => 'Резервная копия сметы в облаке';
+
+  @override
+  String get accountHint =>
+      'Войдите, чтобы сохранять проекты, комнаты, материалы и фото в облаке. Данные останутся после переустановки приложения.';
+
+  @override
+  String get signInWithGoogle => 'Войти через Google';
+
+  @override
+  String get signInWithEmail => 'Войти по email';
+
+  @override
+  String get createAccount => 'Создать аккаунт';
+
+  @override
+  String get haveAccountSignIn => 'Уже есть аккаунт? Войти';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get password => 'Пароль';
+
+  @override
+  String get forgotPassword => 'Забыли пароль?';
+
+  @override
+  String get passwordResetSent => 'Письмо для сброса пароля отправлено';
+
+  @override
+  String get signOut => 'Выйти';
+
+  @override
+  String get signedIn => 'Вы вошли';
+
+  @override
+  String get signInToBackup => 'Войдите, чтобы сохранить смету в облаке';
+
+  @override
+  String get cloudSyncUnavailable =>
+      'Облако не настроено в этой сборке. См. docs/FIREBASE_SETUP.md.';
+
+  @override
+  String get syncInProgress => 'Синхронизация…';
+
+  @override
+  String get syncedToCloud => 'Сохранено в облаке';
+
+  @override
+  String get syncError => 'Ошибка синхронизации — потяните вниз для обновления';
+
+  @override
+  String get syncIdle => 'Резервное копирование включено';
 }

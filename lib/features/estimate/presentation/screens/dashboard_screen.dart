@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:remont_estimate/core/firebase/firebase_bootstrap.dart';
+import 'package:remont_estimate/core/sync/estimate_sync_cubit.dart';
 import 'package:remont_estimate/core/theme/app_palette.dart';
+import 'package:remont_estimate/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:remont_estimate/features/auth/presentation/cubit/auth_state.dart';
+import 'package:remont_estimate/features/auth/presentation/sheets/account_sheet.dart';
 import 'package:remont_estimate/core/theme/app_spacing.dart';
 import 'package:remont_estimate/core/utils/project_name_display.dart';
 import 'package:remont_estimate/features/estimate/presentation/cubit/estimate_cubit.dart';
@@ -85,12 +90,19 @@ class DashboardScreen extends StatelessWidget {
             ],
           ),
           body: RefreshIndicator(
-            onRefresh: () async {},
+            onRefresh: () async {
+              if (!FirebaseBootstrap.isInitialized) {
+                return;
+              }
+              await context.read<EstimateSyncCubit>().pullNow();
+            },
             child: CustomScrollView(
               physics: const AlwaysScrollableScrollPhysics(
                 parent: BouncingScrollPhysics(),
               ),
               slivers: [
+                if (FirebaseBootstrap.isInitialized)
+                  SliverToBoxAdapter(child: _CloudSyncBanner()),
                 SliverPadding(
                   padding: const EdgeInsets.fromLTRB(
                     AppSpacing.md,
@@ -202,6 +214,54 @@ class DashboardScreen extends StatelessWidget {
         MaterialFormSheet.show(
           context,
           roomId: rooms.length == 1 ? rooms.first.id : null,
+        );
+      },
+    );
+  }
+}
+
+class _CloudSyncBanner extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    final palette = context.palette;
+
+    return BlocBuilder<AuthCubit, AuthState>(
+      builder: (context, auth) {
+        if (auth.isSignedIn) {
+          return const SizedBox.shrink();
+        }
+        return Padding(
+          padding: const EdgeInsets.fromLTRB(
+            AppSpacing.md,
+            AppSpacing.sm,
+            AppSpacing.md,
+            0,
+          ),
+          child: Material(
+            color: palette.accentMuted,
+            borderRadius: BorderRadius.circular(AppSpacing.chipRadius),
+            child: InkWell(
+              onTap: () => AccountSheet.show(context),
+              borderRadius: BorderRadius.circular(AppSpacing.chipRadius),
+              child: Padding(
+                padding: const EdgeInsets.all(AppSpacing.md),
+                child: Row(
+                  children: [
+                    Icon(Icons.cloud_upload_outlined, color: palette.accent),
+                    const SizedBox(width: AppSpacing.sm),
+                    Expanded(
+                      child: Text(
+                        l10n.signInToBackup,
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                    ),
+                    Icon(Icons.chevron_right, color: palette.textTertiary),
+                  ],
+                ),
+              ),
+            ),
+          ),
         );
       },
     );

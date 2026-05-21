@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:remont_estimate/core/cubit/app_settings_cubit.dart';
+import 'package:remont_estimate/core/firebase/firebase_bootstrap.dart';
 import 'package:remont_estimate/core/services/material_image_storage.dart';
 import 'package:remont_estimate/core/widgets/app_bottom_sheet.dart';
 import 'package:remont_estimate/core/widgets/app_dialog.dart';
@@ -9,6 +10,9 @@ import 'package:remont_estimate/core/widgets/app_text_field.dart';
 import 'package:remont_estimate/features/estimate/presentation/cubit/estimate_cubit.dart';
 import 'package:remont_estimate/features/estimate/presentation/sheets/export_sheet.dart';
 import 'package:remont_estimate/features/estimate/presentation/sheets/set_budget_sheet.dart';
+import 'package:remont_estimate/core/sync/estimate_sync_cubit.dart';
+import 'package:remont_estimate/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:remont_estimate/features/auth/presentation/sheets/account_sheet.dart';
 import 'package:remont_estimate/features/estimate/presentation/widgets/settings_pickers.dart';
 import 'package:remont_estimate/l10n/app_localizations.dart';
 
@@ -22,6 +26,10 @@ class ProjectSettingsSheet extends StatefulWidget {
         providers: [
           BlocProvider.value(value: context.read<EstimateCubit>()),
           BlocProvider.value(value: context.read<AppSettingsCubit>()),
+          if (FirebaseBootstrap.isInitialized) ...[
+            BlocProvider.value(value: context.read<AuthCubit>()),
+            BlocProvider.value(value: context.read<EstimateSyncCubit>()),
+          ],
         ],
         child: const ProjectSettingsSheet(),
       ),
@@ -82,6 +90,13 @@ class _ProjectSettingsSheetState extends State<ProjectSettingsSheet> {
           label: l10n.projectName,
           textCapitalization: TextCapitalization.words,
         ),
+        if (FirebaseBootstrap.isInitialized)
+          AppSheetListTile(
+            icon: Icons.account_circle_outlined,
+            title: l10n.account,
+            subtitle: l10n.accountSubtitle,
+            onTap: () => AccountSheet.show(context),
+          ),
         AppSheetListTile(
           icon: Icons.language_outlined,
           title: l10n.language,

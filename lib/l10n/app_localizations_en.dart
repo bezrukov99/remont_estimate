@@ -645,4 +645,63 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get unitKg => 'Kg';
+
+  @override
+  String get account => 'Account & cloud sync';
+
+  @override
+  String get accountSubtitle => 'Back up your estimates online';
+
+  @override
+  String get accountHint =>
+      'Sign in to save projects, rooms, materials, and photos to the cloud. Your data will stay after reinstalling the app.';
+
+  @override
+  String get signInWithGoogle => 'Continue with Google';
+
+  @override
+  String get signInWithEmail => 'Sign in with email';
+
+  @override
+  String get createAccount => 'Create account';
+
+  @override
+  String get haveAccountSignIn => 'Already have an account? Sign in';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get password => 'Password';
+
+  @override
+  String get forgotPassword => 'Forgot password?';
+
+  @override
+  String get passwordResetSent => 'Password reset email sent';
+
+  @override
+  String get signOut => 'Sign out';
+
+  @override
+  String get signedIn => 'Signed in';
+
+  @override
+  String get signInToBackup => 'Sign in to back up your estimate to the cloud';
+
+  @override
+  String get cloudSyncUnavailable =>
+      'Cloud sync is not configured in this build. See docs/FIREBASE_SETUP.md.';
+
+  @override
+  String get syncInProgress => 'Syncing…';
+
+  @override
+  String get syncedToCloud => 'Backed up to cloud';
+
+  @override
+  String get syncError => 'Sync error — pull to refresh';
+
+  @override
+  String get syncIdle => 'Cloud backup enabled';
 }

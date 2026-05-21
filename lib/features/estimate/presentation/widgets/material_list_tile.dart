@@ -1,6 +1,6 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:remont_estimate/core/services/material_image_storage.dart';
+import 'package:remont_estimate/core/widgets/material_photo_image.dart';
 import 'package:remont_estimate/core/l10n/material_unit_l10n.dart';
 import 'package:remont_estimate/core/theme/app_palette.dart';
 import 'package:remont_estimate/core/theme/app_spacing.dart';
@@ -38,9 +38,7 @@ class MaterialListTile extends StatelessWidget {
     final l10n = AppLocalizations.of(context)!;
     final palette = context.palette;
     final purchaseDetails = materialPurchaseDetailsLine(context, material);
-    final photoPaths = material.photoPaths
-        .where((p) => p.isNotEmpty && File(p).existsSync())
-        .toList();
+    final photoPaths = MaterialImageStorage.existingPaths(material.photoPaths);
     final photoThumb = photoPaths.isEmpty
         ? null
         : _materialPhotoThumb(
@@ -197,8 +195,7 @@ class _RoundCheckbox extends StatelessWidget {
 }
 
 Widget? _materialPhotoThumb(String path, {required VoidCallback onTap}) {
-  final file = File(path);
-  if (!file.existsSync()) {
+  if (!MaterialImageStorage.isDisplayable(path)) {
     return null;
   }
 
@@ -210,12 +207,11 @@ Widget? _materialPhotoThumb(String path, {required VoidCallback onTap}) {
     onTap: onTap,
     child: ClipRRect(
       borderRadius: borderRadius,
-      child: Image.file(
-        file,
+      child: MaterialPhotoImage(
+        path: path,
         width: size,
         height: size,
         fit: BoxFit.cover,
-        errorBuilder: (context, error, stackTrace) => const SizedBox.shrink(),
       ),
     ),
   );

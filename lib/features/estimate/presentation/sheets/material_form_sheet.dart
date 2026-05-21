@@ -71,6 +71,8 @@ class _MaterialFormSheetState extends State<MaterialFormSheet> {
   bool _isSaving = false;
   bool _nameHasError = false;
   bool _priceHasError = false;
+  /// After successful save, photos are owned by the material — do not delete on dispose.
+  bool _photosSavedWithMaterial = false;
 
   bool get _isEditing => widget.materialId != null;
 
@@ -113,9 +115,11 @@ class _MaterialFormSheetState extends State<MaterialFormSheet> {
 
   @override
   void dispose() {
-    for (final path in _photoPaths) {
-      if (!_originalPhotoPaths.contains(path)) {
-        MaterialImageStorage.deleteIfOwned(path);
+    if (!_photosSavedWithMaterial) {
+      for (final path in _photoPaths) {
+        if (!_originalPhotoPaths.contains(path)) {
+          MaterialImageStorage.deleteIfOwned(path);
+        }
       }
     }
     _nameController.dispose();
@@ -285,6 +289,7 @@ class _MaterialFormSheetState extends State<MaterialFormSheet> {
         );
       }
 
+      _photosSavedWithMaterial = true;
       if (mounted) {
         Navigator.of(context).pop();
       }

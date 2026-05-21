@@ -9,6 +9,23 @@ abstract final class MaterialImageStorage {
   static const _folderName = 'material_images';
   static const _uuid = Uuid();
 
+  static bool isRemoteUrl(String path) =>
+      path.startsWith('http://') || path.startsWith('https://');
+
+  static bool isDisplayable(String path) {
+    if (path.isEmpty) {
+      return false;
+    }
+    if (isRemoteUrl(path)) {
+      return true;
+    }
+    return File(path).existsSync();
+  }
+
+  static List<String> existingPaths(Iterable<String> paths) {
+    return paths.where(isDisplayable).toList();
+  }
+
   static Future<Directory> _imagesDirectory() async {
     final base = await getApplicationDocumentsDirectory();
     final dir = Directory('${base.path}/$_folderName');
@@ -29,7 +46,7 @@ abstract final class MaterialImageStorage {
 
   /// Deletes a file if it lives inside our material images folder.
   static Future<void> deleteIfOwned(String? path) async {
-    if (path == null || path.isEmpty) {
+    if (path == null || path.isEmpty || isRemoteUrl(path)) {
       return;
     }
     final dir = await _imagesDirectory();
@@ -47,6 +64,8 @@ abstract final class MaterialImageStorage {
       await deleteIfOwned(path);
     }
   }
+
+  static String extensionFromPath(String path) => _extensionFromPath(path);
 
   static String _extensionFromPath(String path) {
     final dot = path.lastIndexOf('.');

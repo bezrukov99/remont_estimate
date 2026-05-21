@@ -1171,6 +1171,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Kg'**
   String get unitKg;
+
+  /// No description provided for @account.
+  ///
+  /// In en, this message translates to:
+  /// **'Account & cloud sync'**
+  String get account;
+
+  /// No description provided for @accountSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Back up your estimates online'**
+  String get accountSubtitle;
+
+  /// No description provided for @accountHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to save projects, rooms, materials, and photos to the cloud. Your data will stay after reinstalling the app.'**
+  String get accountHint;
+
+  /// No description provided for @signInWithGoogle.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue with Google'**
+  String get signInWithGoogle;
+
+  /// No description provided for @signInWithEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in with email'**
+  String get signInWithEmail;
+
+  /// No description provided for @createAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Create account'**
+  String get createAccount;
+
+  /// No description provided for @haveAccountSignIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Already have an account? Sign in'**
+  String get haveAccountSignIn;
+
+  /// No description provided for @email.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get email;
+
+  /// No description provided for @password.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get password;
+
+  /// No description provided for @forgotPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Forgot password?'**
+  String get forgotPassword;
+
+  /// No description provided for @passwordResetSent.
+  ///
+  /// In en, this message translates to:
+  /// **'Password reset email sent'**
+  String get passwordResetSent;
+
+  /// No description provided for @signOut.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out'**
+  String get signOut;
+
+  /// No description provided for @signedIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Signed in'**
+  String get signedIn;
+
+  /// No description provided for @signInToBackup.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in to back up your estimate to the cloud'**
+  String get signInToBackup;
+
+  /// No description provided for @cloudSyncUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Cloud sync is not configured in this build. See docs/FIREBASE_SETUP.md.'**
+  String get cloudSyncUnavailable;
+
+  /// No description provided for @syncInProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Syncing…'**
+  String get syncInProgress;
+
+  /// No description provided for @syncedToCloud.
+  ///
+  /// In en, this message translates to:
+  /// **'Backed up to cloud'**
+  String get syncedToCloud;
+
+  /// No description provided for @syncError.
+  ///
+  /// In en, this message translates to:
+  /// **'Sync error — pull to refresh'**
+  String get syncError;
+
+  /// No description provided for @syncIdle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cloud backup enabled'**
+  String get syncIdle;
 }
 
 class _AppLocalizationsDelegate

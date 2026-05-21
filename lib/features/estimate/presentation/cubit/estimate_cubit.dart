@@ -19,6 +19,7 @@ class EstimateCubit extends HydratedCubit<EstimateState> {
   }
 
   final String Function() _generateId;
+  bool _preserveModifiedTimestamp = false;
 
   static String _bootstrapId(String Function()? generateId) {
     return generateId?.call() ?? 'bootstrap-project';
@@ -43,6 +44,22 @@ class EstimateCubit extends HydratedCubit<EstimateState> {
 
   void _emitUpdatedProject(ProjectModel Function(ProjectModel) update) {
     emit(state.updateActiveProject(update));
+  }
+
+  /// Applies cloud snapshot without bumping [EstimateState.lastModified].
+  void replaceFromCloud(EstimateState cloudState) {
+    _preserveModifiedTimestamp = true;
+    emit(cloudState);
+    _preserveModifiedTimestamp = false;
+  }
+
+  @override
+  void emit(EstimateState state) {
+    if (_preserveModifiedTimestamp) {
+      super.emit(state);
+      return;
+    }
+    super.emit(state.copyWith(touchModified: true));
   }
 
   // ——— Projects ———

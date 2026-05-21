@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "666709576823",
+    "project_id": "smetochka-22b83",
+    "storage_bucket": "smetochka-22b83.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:666709576823:android:d607f98b84c06f24f28a72",
+        "android_client_info": {
+          "package_name": "com.remontestimate.remont_estimate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "666709576823-fjto2187ugq9g7nau9v0r8s00vbelucj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.remontestimate.remont_estimate",
+            "certificate_hash": "0844602e1d0b2d4c879cb4da52e8f683ea749bf4"
+          }
+        },
+        {
+          "client_id": "666709576823-sucb4p850o23398jhdt7stpdtg6jg3nq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.remontestimate.remont_estimate",
+            "certificate_hash": "3efa9de577b552a5d2e1c449b72127c90e9c7ec2"
+          }
+        },
+        {
+          "client_id": "666709576823-lhrs4i3m3u0rj57ec0sc2nudh6piuvtu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0LobIPzFV4UKvqFtY0kLFWkv-IT8K7lw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "666709576823-lhrs4i3m3u0rj57ec0sc2nudh6piuvtu.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "666709576823-m829p74v33cs77q3i12sk1n5qk1sfc30.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.remontestimate.remontEstimate"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

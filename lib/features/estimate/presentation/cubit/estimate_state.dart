@@ -10,13 +10,19 @@ class EstimateState extends Equatable {
     this.schemaVersion = StorageKeys.estimateStateSchemaVersion,
     List<ProjectModel>? projects,
     String? activeProjectId,
+    DateTime? lastModified,
+    bool touchModified = false,
   })  : projects = projects ?? const [],
         activeProjectId = activeProjectId ??
-            (projects?.isNotEmpty == true ? projects!.first.id : null);
+            (projects?.isNotEmpty == true ? projects!.first.id : null),
+        lastModified = touchModified
+            ? DateTime.now()
+            : lastModified;
 
   final int schemaVersion;
   final List<ProjectModel> projects;
   final String? activeProjectId;
+  final DateTime? lastModified;
 
   ProjectModel? get activeProject {
     if (activeProjectId == null || projects.isEmpty) {
@@ -72,11 +78,15 @@ class EstimateState extends Equatable {
     int? schemaVersion,
     List<ProjectModel>? projects,
     String? activeProjectId,
+    DateTime? lastModified,
+    bool touchModified = false,
   }) {
     return EstimateState(
       schemaVersion: schemaVersion ?? this.schemaVersion,
       projects: projects ?? this.projects,
       activeProjectId: activeProjectId ?? this.activeProjectId,
+      lastModified: lastModified ?? this.lastModified,
+      touchModified: touchModified,
     );
   }
 
@@ -98,6 +108,8 @@ class EstimateState extends Equatable {
       'schemaVersion': schemaVersion,
       'projects': projects.map((p) => p.toJson()).toList(),
       'activeProjectId': activeProjectId,
+      if (lastModified != null)
+        'lastModified': lastModified!.toIso8601String(),
     };
   }
 
@@ -110,10 +122,14 @@ class EstimateState extends Equatable {
           .map((e) => ProjectModel.fromJson(e as Map<String, dynamic>))
           .toList();
       final activeId = json['activeProjectId'] as String?;
+      final lastModified = json['lastModified'] != null
+          ? DateTime.parse(json['lastModified'] as String)
+          : null;
       return EstimateState(
         schemaVersion: version,
         projects: projects.isEmpty ? null : projects,
         activeProjectId: activeId,
+        lastModified: lastModified,
       );
     }
 
@@ -151,5 +167,6 @@ class EstimateState extends Equatable {
   }
 
   @override
-  List<Object?> get props => [schemaVersion, projects, activeProjectId];
+  List<Object?> get props =>
+      [schemaVersion, projects, activeProjectId, lastModified];
 }

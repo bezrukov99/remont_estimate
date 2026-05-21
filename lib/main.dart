@@ -4,11 +4,13 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:remont_estimate/app.dart';
+import 'package:remont_estimate/core/firebase/firebase_bootstrap.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDateFormatting('ru');
   await initializeDateFormatting('en');
+  await FirebaseBootstrap.initialize();
 
   HydratedBloc.storage = await HydratedStorage.build(
     storageDirectory: kIsWeb
