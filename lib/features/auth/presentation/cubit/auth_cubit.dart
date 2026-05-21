@@ -87,18 +87,19 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  Future<void> sendPasswordReset(String email) async {
+  /// Returns `true` if Firebase accepted the reset request.
+  Future<bool> sendPasswordReset(String email) async {
     emit(state.copyWith(isBusy: true, clearError: true));
     try {
       await _repository.sendPasswordReset(email);
       emit(state.copyWith(isBusy: false, clearError: true));
+      return true;
     } on FirebaseAuthException catch (e) {
-      emit(
-        state.copyWith(
-          isBusy: false,
-          errorMessage: e.message ?? e.code,
-        ),
-      );
+      emit(state.copyWith(isBusy: false, errorMessage: e.code));
+      return false;
+    } catch (e) {
+      emit(state.copyWith(isBusy: false, errorMessage: e.toString()));
+      return false;
     }
   }
 

@@ -52,7 +52,16 @@ class AuthRepository {
   }
 
   Future<void> sendPasswordReset(String email) {
-    return _auth.sendPasswordResetEmail(email: email.trim());
+    return _auth.sendPasswordResetEmail(
+      email: email.trim(),
+      actionCodeSettings: ActionCodeSettings(
+        url: 'https://smetochka-22b83.firebaseapp.com',
+        androidPackageName: 'com.remontestimate.remont_estimate',
+        androidInstallApp: true,
+        androidMinimumVersion: '1',
+        handleCodeInApp: false,
+      ),
+    );
   }
 
   Future<void> signOut() async {

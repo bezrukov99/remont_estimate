@@ -681,6 +681,36 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwordResetSent => 'Password reset email sent';
 
   @override
+  String get passwordResetCheckSpam =>
+      'Check your inbox and spam folder. The link opens in your browser.';
+
+  @override
+  String get enterEmailForReset =>
+      'Enter your email above, then tap «Forgot password?»';
+
+  @override
+  String get authInvalidEmail => 'Invalid email address';
+
+  @override
+  String get authUserNotFound =>
+      'No account with this email. Create an account or check the address.';
+
+  @override
+  String get authWrongPassword => 'Wrong password';
+
+  @override
+  String get authEmailAlreadyInUse => 'This email is already registered';
+
+  @override
+  String get authWeakPassword => 'Password must be at least 6 characters';
+
+  @override
+  String get authTooManyRequests => 'Too many attempts. Try again later.';
+
+  @override
+  String get authNetworkError => 'Network error. Check your connection.';
+
+  @override
   String get signOut => 'Sign out';
 
   @override

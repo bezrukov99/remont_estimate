@@ -7,6 +7,8 @@ import 'package:remont_estimate/core/theme/app_spacing.dart';
 import 'package:remont_estimate/core/widgets/app_bottom_sheet.dart';
 import 'package:remont_estimate/core/widgets/app_primary_button.dart';
 import 'package:remont_estimate/core/widgets/app_text_field.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:remont_estimate/core/l10n/auth_error_l10n.dart';
 import 'package:remont_estimate/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:remont_estimate/l10n/app_localizations.dart';
 
@@ -35,6 +37,7 @@ class _AccountSheetState extends State<AccountSheet> {
   final _passwordController = TextEditingController();
   bool _isRegisterMode = false;
   bool _obscurePassword = true;
+  bool _passwordResetSent = false;
 
   @override
   void dispose() {
@@ -102,6 +105,11 @@ class _AccountSheetState extends State<AccountSheet> {
             controller: _emailController,
             label: l10n.email,
             keyboardType: TextInputType.emailAddress,
+            onChanged: (_) {
+              if (_passwordResetSent) {
+                setState(() => _passwordResetSent = false);
+              }
+            },
           ),
           const SizedBox(height: AppSpacing.sm),
           AppTextField(
@@ -136,11 +144,27 @@ class _AccountSheetState extends State<AccountSheet> {
               onPressed: auth.isBusy ? null : _resetPassword,
               child: Text(l10n.forgotPassword),
             ),
+          if (_passwordResetSent) ...[
+            const SizedBox(height: AppSpacing.sm),
+            Text(
+              l10n.passwordResetSent,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: context.palette.accent,
+                    fontWeight: FontWeight.w500,
+                  ),
+            ),
+            Text(
+              l10n.passwordResetCheckSpam,
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: context.palette.textSecondary,
+                  ),
+            ),
+          ],
         ],
-        if (auth.errorMessage != null) ...[
+        if (auth.errorMessage != null && !_passwordResetSent) ...[
           const SizedBox(height: AppSpacing.sm),
           Text(
-            auth.errorMessage!,
+            _formatAuthError(context, auth.errorMessage!),
             style: TextStyle(color: Theme.of(context).colorScheme.error),
           ),
         ],
@@ -176,19 +200,50 @@ class _AccountSheetState extends State<AccountSheet> {
   }
 
   Future<void> _resetPassword() async {
+    final l10n = AppLocalizations.of(context)!;
     final email = _emailController.text.trim();
     if (email.isEmpty) {
+      setState(() => _passwordResetSent = false);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(l10n.enterEmailForReset),
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
       return;
     }
-    await context.read<AuthCubit>().sendPasswordReset(email);
+
+    setState(() => _passwordResetSent = false);
+    final cubit = context.read<AuthCubit>();
+    final ok = await cubit.sendPasswordReset(email);
     if (!mounted) {
       return;
     }
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(AppLocalizations.of(context)!.passwordResetSent),
-        behavior: SnackBarBehavior.floating,
-      ),
+
+    if (ok) {
+      setState(() => _passwordResetSent = true);
+      FocusScope.of(context).unfocus();
+      return;
+    }
+
+    final error = cubit.state.errorMessage;
+    if (error != null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(_formatAuthError(context, error)),
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
+    }
+  }
+
+  String _formatAuthError(BuildContext context, String error) {
+    if (!error.contains('-')) {
+      return error;
+    }
+    return authErrorMessage(
+      context,
+      FirebaseAuthException(code: error, message: null),
     );
   }
 }

@@ -695,6 +695,36 @@ class AppLocalizationsRu extends AppLocalizations {
   String get passwordResetSent => 'Письмо для сброса пароля отправлено';
 
   @override
+  String get passwordResetCheckSpam =>
+      'Проверьте почту и папку «Спам». Ссылка откроется в браузере.';
+
+  @override
+  String get enterEmailForReset =>
+      'Сначала введите email в поле выше, затем нажмите «Забыли пароль?»';
+
+  @override
+  String get authInvalidEmail => 'Некорректный email';
+
+  @override
+  String get authUserNotFound =>
+      'Аккаунта с таким email нет. Создайте аккаунт или проверьте адрес.';
+
+  @override
+  String get authWrongPassword => 'Неверный пароль';
+
+  @override
+  String get authEmailAlreadyInUse => 'Этот email уже зарегистрирован';
+
+  @override
+  String get authWeakPassword => 'Пароль должен быть не короче 6 символов';
+
+  @override
+  String get authTooManyRequests => 'Слишком много попыток. Попробуйте позже.';
+
+  @override
+  String get authNetworkError => 'Нет сети. Проверьте подключение.';
+
+  @override
   String get signOut => 'Выйти';
 
   @override

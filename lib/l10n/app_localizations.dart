@@ -1238,6 +1238,60 @@ abstract class AppLocalizations {
   /// **'Password reset email sent'**
   String get passwordResetSent;
 
+  /// No description provided for @passwordResetCheckSpam.
+  ///
+  /// In en, this message translates to:
+  /// **'Check your inbox and spam folder. The link opens in your browser.'**
+  String get passwordResetCheckSpam;
+
+  /// No description provided for @enterEmailForReset.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter your email above, then tap «Forgot password?»'**
+  String get enterEmailForReset;
+
+  /// No description provided for @authInvalidEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid email address'**
+  String get authInvalidEmail;
+
+  /// No description provided for @authUserNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No account with this email. Create an account or check the address.'**
+  String get authUserNotFound;
+
+  /// No description provided for @authWrongPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong password'**
+  String get authWrongPassword;
+
+  /// No description provided for @authEmailAlreadyInUse.
+  ///
+  /// In en, this message translates to:
+  /// **'This email is already registered'**
+  String get authEmailAlreadyInUse;
+
+  /// No description provided for @authWeakPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 6 characters'**
+  String get authWeakPassword;
+
+  /// No description provided for @authTooManyRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'Too many attempts. Try again later.'**
+  String get authTooManyRequests;
+
+  /// No description provided for @authNetworkError.
+  ///
+  /// In en, this message translates to:
+  /// **'Network error. Check your connection.'**
+  String get authNetworkError;
+
   /// No description provided for @signOut.
   ///
   /// In en, this message translates to:
